@@ -1,5 +1,3 @@
-
-
 # Function 1: Reads a fasta file and returns a list of named protein sequences.
 upload_fasta <- function(testfasta.txt) {
   read.fasta(testfasta.txt, seqtype = "AA", as.string = TRUE, set.attributes = FALSE)
