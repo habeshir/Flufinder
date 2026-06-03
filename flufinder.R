@@ -1,4 +1,10 @@
-<<<<<<< HEAD
+
+
+# Function 1: Reads a fasta file and returns a list of named protein sequences.
+upload_fasta <- function(testfasta.txt) {
+  read.fasta(testfasta.txt, seqtype = "AA", as.string = TRUE, set.attributes = FALSE)
+}
+
 
 # Function 2: 
 trypsinize <- function(proteins) {
@@ -9,13 +15,23 @@ trypsinize <- function(proteins) {
   lapply(proteins, str_split_1, pattern="(?<=R|K)")
 }
 
-=======
-library(seqinr)
 
-# Function 1: Reads a fasta file and returns a list of named protein sequences.
-upload_fasta <- function(testfasta.txt) {
-  read.fasta(testfasta.txt, seqtype = "AA", as.string = TRUE, set.attributes = FALSE)
+
+# Function 3: 
+
+count_matching_masses <- function(protein_masses, sample) {
+  #Virus masses is a list of masses for each protein so we use sapply to iterate over the list; sum (of TRUEs) is used to count the number of
+  # times a mass in the sample is found (%in%) among the masses of each of
+  # the proteins (virus_masses); note that masses are converted into strings
+  # (as.character) because %in% is not very reliable with numbers
+  df <- as.data.frame(sapply(protein_masses, function (x)
+    sum(as.character(sample) %in% as.character(x))))
+  # Adding peptide_counts as the column name of the counts column
+  names(df) <- "peptide_counts"
+  return(df)
 }
+
+
 
 # Function 4: Calculates peptide masses from amino acids using a mass table.
 splitpeptides_to_masses <- function(aa) {
@@ -31,4 +47,3 @@ splitpeptides_to_masses <- function(aa) {
   
   lapply(peptide_masses, unlist)
 }
->>>>>>> f7d7dcba0cc047995399b9cf7dd5b871f73d2d1b
