@@ -1,6 +1,11 @@
 # Function 1: Reads a fasta file and returns a list of named protein sequences.
 upload_fasta <- function(fasta_filename) {
-  read.fasta(fasta_filename, seqtype = "AA", as.string = TRUE, set.attributes = FALSE)
+  #Opening seqinr library for handling FASTA files; make sure you have
+  #seqinr installed
+  library(seqinr)
+  #Reading the fasta file
+  read.fasta(fasta_filename, seqtype = "AA", as.string = TRUE,
+             set.attributes = FALSE)
 }
 
 
