@@ -55,3 +55,15 @@ count_matching_masses <- function(protein_masses, sample) {
   names(df) <- "peptide_counts"
   return(df)
 }
+
+
+# Function 6:
+ggbarplot <- function(peptide_counts_table) {
+  library(ggplot2)
+  # Generating a barplot from the peptide counts dataframe
+  ggplot(peptide_counts_table) +
+    aes(rownames(peptide_counts_table), peptide_counts) +
+    geom_col(fill="blue", width=0.5) +
+    theme_bw() +
+    labs(x="Flu Strain", y="Peptide Counts")
+}
