@@ -34,7 +34,6 @@ splitpeptides_to_masses <- function(aa) {
 
 
 # Function 5: 
-
 count_matching_masses <- function(protein_masses, sample) {
   #Virus masses is a list of masses for each protein so we use sapply to
   # iterate over the list; sum (of TRUEs) is used to count the number of
